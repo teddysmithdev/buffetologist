@@ -1,11 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Axios from 'axios';
 import IncomeStatement from './IncomeStatement'
+import CompanyInfo from './CompanyInfo'
 
 class SearchBar extends Component {
 
     state = {
         search: '',
-        incomeStatement: []
+        incomeStatement: '',
+        description: '',
+        isLoaded: false
     }
 
     onChange = e => {
@@ -14,10 +18,12 @@ class SearchBar extends Component {
 
     submitHandler = e => {
         e.preventDefault()
-        fetch(`https://financialmodelingprep.com/api/v3/financials/income-statement/${this.state.search}`)
-        .then(response => response.json())
-        .then(data => this.setState({ incomeStatement: data }))
+        Axios.get(`https://financialmodelingprep.com/api/v3/financials/income-statement/${this.state.search}`)
+        .then(data => this.setState({ incomeStatement: data, isLoaded: true }))
         .catch(err => console.log(err))
+        Axios.get(`https://financialmodelingprep.com/api/v3/company/profile/${this.state.search}`)
+        // .then(data => console.log(data))
+        .then(data => this.setState({description: data, isLoaded: true }))
     }
 
     render() {
@@ -30,12 +36,14 @@ class SearchBar extends Component {
                 name="search"
                 value={this.state.search} 
                 onChange={this.onChange}
-                placeholder="Search" 
+                placeholder="Examples: RDFN, MSFT, GE, TGT" 
                 aria-label="Search"
                 ></input>
-                <button className="btn btn-lg btn-primary btn-block mt-3" type="submit">Submit</button>
+                <button className="btn btn-lg btn-primary btn-block mt-3" type="submit">Search!</button>
             </form>
-            <IncomeStatement incomeStatement={this.state.incomeStatement} />
+            {this.state.description && (<CompanyInfo description={this.state.description} />)}
+            {this.state.incomeStatement && (<IncomeStatement incomeStatement={this.state.incomeStatement} />)}
+            {/* {!this.state.isLoaded && (<Error />)} */}
             </div>
         )
     }

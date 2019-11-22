@@ -1,14 +1,15 @@
 import React from 'react';
-import SearchBar from './components/SearchBar'
-import NavBar from './components/NavBar'
+import { BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import Home from './pages/Home'
+import Search from './pages/Search'
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-    <NavBar />
-    <SearchBar />
-    </div>
+    <Router>
+      <Route exact path='/' component={Home} />
+      <Route exact path='/search' component={Search} />
+    </Router>
   );
 }
 
