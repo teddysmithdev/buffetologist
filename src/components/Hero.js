@@ -5,7 +5,7 @@ const Hero = () => {
         <div>
             <div class="jumbotron">
                 <h1 class="display-4">Invest Like Warren Buffet!</h1>
-                    <p class="lead">Step-By-Step walkthrough of the investment techniques used by Warren Buffet. Learn the exact tactics used to analyze income, balance, and cash-flow!</p>
+                    <p class="lead">Learn the exact tactics used to analyze income, balance, and cash-flow!</p>
                     {/* <hr class="my-4"> */}
                     <p>Based-off "Warren Buffet and The Interpretation of Financial Statements" by Mary Buffet & David Clark</p>
                     <p class="lead">
