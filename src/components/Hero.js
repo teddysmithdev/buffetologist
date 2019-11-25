@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
     return (
@@ -9,7 +10,7 @@ const Hero = () => {
                     {/* <hr class="my-4"> */}
                     <p>Based-off "Warren Buffet and The Interpretation of Financial Statements" by Mary Buffet & David Clark</p>
                     <p class="lead">
-                    <a class="btn btn-primary btn-lg" href="/search" role="button">Click to Begin!</a>
+                    <Link class="btn btn-primary btn-lg" to='/search' role="button">Click to Begin!</Link>
                 </p>
             </div>
         </div>
