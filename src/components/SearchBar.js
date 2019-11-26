@@ -9,7 +9,6 @@ class SearchBar extends Component {
         search: '',
         incomeStatement: '',
         description: '',
-        isLoaded: false
     }
 
     onChange = e => {
@@ -19,14 +18,15 @@ class SearchBar extends Component {
     submitHandler = e => {
         e.preventDefault()
         Axios.get(`https://financialmodelingprep.com/api/v3/financials/income-statement/${this.state.search}`)
-        .then(data => this.setState({ incomeStatement: data, isLoaded: true }))
+        .then(data => this.setState({ incomeStatement: data }))
         .catch(err => console.log(err))
         Axios.get(`https://financialmodelingprep.com/api/v3/company/profile/${this.state.search}`)
         // .then(data => console.log(data))
-        .then(data => this.setState({description: data, isLoaded: true }))
+        .then(data => this.setState({description: data }))
     }
 
     render() {
+        console.log(this.state.description)
         return (
             <div className="mt-3">
             <form onSubmit={this.submitHandler}>
@@ -42,7 +42,7 @@ class SearchBar extends Component {
                 <button className="btn btn-lg btn-primary btn-block mt-3" type="submit">Search!</button>
             </form>
             {this.state.description && (<CompanyInfo description={this.state.description} />)}
-            {this.state.incomeStatement && (<IncomeStatement incomeStatement={this.state.incomeStatement} />)}
+            {this.state.incomeStatement && (<IncomeStatement incomeStatement={this.state.incomeStatement} />)}            
             {/* {!this.state.isLoaded && (<Error />)} */}
             </div>
         )

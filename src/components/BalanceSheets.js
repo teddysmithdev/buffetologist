@@ -10,6 +10,10 @@ const BalanceSheets = (props) => {
     const shorttermINvestments = (props.balancesheet.data.financials[0]['Short-term investments']) / 1000000 + ' million'
     const inventory = (props.balancesheet.data.financials[0]['Inventories']) / 1000000 + ' million'
     const otherAssets = (props.balancesheet.data.financials[0]['Other Assets']) / 1000000 + ' million'
+    const netRecieve = (props.balancesheet.data.financials[0]['Receivables']) / 1000000 + ' million'
+    const currentRatio = (props.balancesheet.data.financials[0]['Total assets']) / (props.balancesheet.data.financials[0]['Total current liabilities'])
+    const property = (props.balancesheet.data.financials[0]['Property, Plant & Equipment Net']) / 1000000 + ' million'
+    console.log(props.balancesheet)
     return (
         <div>
         <div className="card mt-3">
@@ -46,6 +50,28 @@ const BalanceSheets = (props) => {
                     3. <b>Inventory</b> {inventory}
                     <br/>
                     4. <b>Other Assets</b> {otherAssets}
+                </div>
+            </div>
+            <div className="card mt-3">
+                <div className="card-body">
+                    <b>Cash and Cash Equivalents</b> are exactly what they sound like. Low cash reserves indicate a competitive business enviornment or poor economics. Sometimes this can also indicate a company that has sold a large stake in bonds.
+                </div>
+            </div>
+            <div className="card mt-3">
+                <div className="card-body">
+                    <b>Inventory</b> is the companies products that it has warehoused to sell it's vendors. Huge stockpiles or rapidly swinging inventory can be a sign of a business in trouble.
+                </div>
+            </div>
+            <div className="card mt-3">
+                <div className="card-body">
+                    <b>Current Ratio</b> is a very popular indicatior of the liquidity of a company. Anything below one is bad
+                    {currentRatio}
+                </div>
+            </div>
+            <div className="card mt-3">
+                <div className="card-body">
+                    <b>Property, Plant, Equipment</b> are the collective amounts of property in assets. Companies with poor competitive advantage require massive investments in machinery.
+                    {property}
                 </div>
             </div>
         </div>
