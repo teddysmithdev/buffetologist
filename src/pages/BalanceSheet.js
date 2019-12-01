@@ -5,6 +5,7 @@ import BalanceSheets from '../components/BalanceSheets'
 import CompanyInfo from '../components/CompanyInfo'
 
 class BalanceSheet extends Component {
+    _isMounted = false;
 
     state = {
         search: '',
@@ -13,19 +14,24 @@ class BalanceSheet extends Component {
         isLoaded: false
     }
 
+
     onChange = e => {
         this.setState({ [e.target.name]: e.target.value})
     }
 
+
     submitHandler = e => {
         e.preventDefault()
-        Axios.get(`https://financialmodelingprep.com/api/v3/financials/balance-sheet-statement/${this.state.search}`)
-        .then(data => this.setState({ balanceSheet: data, isLoaded: true }))
+        Axios
+        .get(`https://financialmodelingprep.com/api/v3/financials/balance-sheet-statement/${this.state.search}`)
+        .then(data => 
+            this.setState({ balanceSheet: data, isLoaded: true }))
         .catch(err => console.log(err))
         Axios.get(`https://financialmodelingprep.com/api/v3/company/profile/${this.state.search}`)
         // .then(data => console.log(data))
         .then(data => this.setState({description: data, isLoaded: true }))
     }
+
 
     render() {
         return (

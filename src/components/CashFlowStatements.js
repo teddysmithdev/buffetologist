@@ -11,13 +11,17 @@ const BalanceSheets = (props) => {
         <div>
         <div className="card mt-3">
                 <div className="card-body">
-                    A cash-flow statement is broken into 3 parts: 
-                    <br></br>
-                     1. <b>Operating activities</b> {operatingCashflow}
+                    <h5>A <b>cash-flow statement</b> is broken into 3 parts:</h5> 
+                    <br/>
+                     1. <b>Operating activities:</b> Cash generated from sales of goods or services. Sales from long-terms assets not included. 
+                     <p className="text-success">{operatingCashflow}</p>
                      <br></br>
-                     2. <b>Investing Activites</b> {investingCashflow}
+                     2. <b>Investing Activites:</b>  Money made from stocks, bonds, dividends, real-estate, sale of equipment, etc.<p className="text-success">{investingCashflow}</p>
                      <br></br>
-                     3. <b>Financing Activites</b> {financingCashflow}
+                     3. <b>Financing Activites</b>: Issuances of debt or equity, stock repurchases, divdend payments, and repayment of debt 
+                     <br/>
+                     <p className="text-success">{financingCashflow}</p>
+                     
                 </div>
             </div>
         <div className="card mt-3">

@@ -26,7 +26,6 @@ class SearchBar extends Component {
     }
 
     render() {
-        console.log(this.state.description)
         return (
             <div className="mt-3">
             <form onSubmit={this.submitHandler}>

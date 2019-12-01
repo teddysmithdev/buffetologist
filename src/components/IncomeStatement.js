@@ -2,7 +2,7 @@ import React from 'react'
 
 const IncomeStatement = (props) => {
     const symbol = props.incomeStatement.data.symbol
-    const sga = props.incomeStatement.data.financials[0]['SG&A Expense'] / (props.incomeStatement.data.financials[0]['Gross Profit'])
+    const sga = props.incomeStatement.data.financials[0]['SG&A Expense'] / 1000000 + ' million'
     const grossMargin = props.incomeStatement.data.financials[0]['Gross Margin']
     const date = props.incomeStatement.data.financials[0]['date']
     const grossProfit = (props.incomeStatement.data.financials[0]['Gross Profit']) / 1000000 + ' million'
@@ -51,7 +51,6 @@ const IncomeStatement = (props) => {
                     <b>Gross Margin</b> Warren believes that companies with <b>consistently high gross margins</b> are likely more profitable and have a higher competitive advantage.
                     <br></br>
                     <p className="text-success">{symbol} {grossMargin}</p>
-                    <p className="text-danger">A gross profit margin below %20 is consider a warning sign.</p>
                 </div>
             </div>
                 <div className="card mt-3">
