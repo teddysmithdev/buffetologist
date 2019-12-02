@@ -1,19 +1,20 @@
 import React from 'react'
+import "../css/banner.css"
 import { Link } from 'react-router-dom'
 
 const Hero = () => {
     return (
-        <div>
-            <div class="jumbotron">
-                <h1 class="display-4">Invest Like Warren Buffet!</h1>
-                    <p class="lead">Learn the exact tactics used to analyze income, balance, and cash-flow!</p>
-                    {/* <hr class="my-4"> */}
-                    <p>Based-off "Warren Buffet and The Interpretation of Financial Statements" by Mary Buffet & David Clark</p>
-                    <p class="lead">
-                    <Link class="btn btn-primary btn-lg" to='/search' role="button">Click to Begin!</Link>
-                </p>
+        <header>
+        <section id="banner">
+            <div className="banner-box">
+                <h1 id="banner-title">Learn to invest like the best</h1>
+                <div className="banner-underline"></div>
+                <h4 className="banner-subtitle">Analyze companies using fundamental analysis</h4>
+                {/* <img src="hero.png" alt=""/> */}
+                <button className="banner-button"><Link to='/'>Click to begin</Link></button>
             </div>
-        </div>
+        </section>
+        </header>
     )
 }
 

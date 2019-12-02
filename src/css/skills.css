@@ -1,0 +1,25 @@
+.skills-center {
+    font-family: 'Muli';
+    display: block;
+    padding: 84px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.skills-center2 {
+    font-family: 'Muli';
+    display: block;
+    padding: 108px;
+    font-weight: 700;
+    text-align: center;
+    background-color: rgb(247, 248, 252);;
+}
+
+.skills-center3 {
+    font-family: 'Muli';
+    display: block;
+    padding: 108px;
+    font-weight: 700;
+    text-align: center;
+    background-color: black;
+}
