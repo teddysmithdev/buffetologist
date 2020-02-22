@@ -15,6 +15,7 @@ export class Provider extends Component {
         loading: false,
         query: '',
         newsearch: '',
+        yearlyIncome: false,
         results: [],
         message: '',
         infoFetch: this.infoFetch,
@@ -22,6 +23,7 @@ export class Provider extends Component {
         handleOnInputChange: this.handleOnInputChange,
         renderSearchResults: this.renderSearchResults,
         displaySearchNewSearch: this.renderSearchResults,
+        infoFetchIncomeYearly: this.infoFetchIncomeYearly,
       };
 
       this.cancel = '';
@@ -32,6 +34,17 @@ export class Provider extends Component {
         .get(initialURL)
         .then(res => {
           this.setState({ data: res.data, loading: false });
+        })
+        .catch(err => {
+          this.setState({ error: err, loading: false });
+        });
+    }
+
+    infoFetchIncomeYearly = () => {
+        axios
+        .get(`https://financialmodelingprep.com/api/v3/financials/income-statement/AAPL`)
+        .then(res => {
+          this.setState({ yearlyIncome: res.data, loading: false });
         })
         .catch(err => {
           this.setState({ error: err, loading: false });
@@ -77,6 +90,7 @@ export class Provider extends Component {
     console.log(newsearch)
     this.setState({newsearch: newsearch, loading: true}, () => {
       this.renderNewSearch(newsearch)
+      this.yearlyIncome()
     })
   }
 
@@ -107,7 +121,20 @@ export class Provider extends Component {
           this.setState({ error: err, loading: false });
         });
   }
-    
+
+  yearlyIncome = (search) => {
+    const {newsearch} = this.state
+    const yearlyIncome = `https://financialmodelingprep.com/api/v3/financials/income-statement/${newsearch}`
+    axios
+        .get(yearlyIncome)
+        .then(res => {
+          console.log(res)
+          this.setState({ yearlyIncome: res.data, loading: false });
+        })
+        .catch(err => {
+          this.setState({ error: err, loading: false });
+        });
+  }    
 
     render() {
         return (

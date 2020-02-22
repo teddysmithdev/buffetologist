@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BuffetContext } from '../Provider'
-import Select from 'react-select'
+import Barchart from './Barchart'
+
 
 
 export default class Dashboard extends Component {
@@ -8,6 +9,7 @@ export default class Dashboard extends Component {
 
   componentDidMount() {
     this.context.infoFetch()
+    this.context.infoFetchIncomeYearly()
   }
 
     render() {
@@ -100,6 +102,7 @@ export default class Dashboard extends Component {
                     </div>
                   </div> 
                 )}
+                <Barchart></Barchart>
                 
 
 
