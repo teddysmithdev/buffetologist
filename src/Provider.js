@@ -16,6 +16,8 @@ export class Provider extends Component {
         query: '',
         newsearch: '',
         yearlyIncome: false,
+        yearlyBalance: false,
+        yearlyBalanceSheet: false,
         results: [],
         message: '',
         infoFetch: this.infoFetch,
@@ -24,6 +26,7 @@ export class Provider extends Component {
         renderSearchResults: this.renderSearchResults,
         displaySearchNewSearch: this.renderSearchResults,
         infoFetchIncomeYearly: this.infoFetchIncomeYearly,
+        infoFetchBalanceSheet: this.infoFetchBalanceSheet,
       };
 
       this.cancel = '';
@@ -45,6 +48,17 @@ export class Provider extends Component {
         .get(`https://financialmodelingprep.com/api/v3/financials/income-statement/AAPL`)
         .then(res => {
           this.setState({ yearlyIncome: res.data, loading: false });
+        })
+        .catch(err => {
+          this.setState({ error: err, loading: false });
+        });
+    }
+
+    infoFetchBalanceSheet = () => {
+        axios
+        .get(`https://financialmodelingprep.com/api/v3/financials/balance-sheet-statement/AAPL`)
+        .then(res => {
+          this.setState({ yearlyBalanceSheet: res.data, loading: false });
         })
         .catch(err => {
           this.setState({ error: err, loading: false });
@@ -91,6 +105,7 @@ export class Provider extends Component {
     this.setState({newsearch: newsearch, loading: true}, () => {
       this.renderNewSearch(newsearch)
       this.yearlyIncome()
+      this.yearlyBalance()
     })
   }
 
@@ -130,6 +145,19 @@ export class Provider extends Component {
         .then(res => {
           console.log(res)
           this.setState({ yearlyIncome: res.data, loading: false });
+        })
+        .catch(err => {
+          this.setState({ error: err, loading: false });
+        });
+  }    
+  yearlyBalance = (search) => {
+    const {newsearch} = this.state
+    const yearlyIncome = `https://financialmodelingprep.com/api/v3/financials/balance-sheet-statement/${newsearch}`
+    axios
+        .get(yearlyIncome)
+        .then(res => {
+          console.log(res)
+          this.setState({ yearlyBalanceSheet: res.data, loading: false });
         })
         .catch(err => {
           this.setState({ error: err, loading: false });

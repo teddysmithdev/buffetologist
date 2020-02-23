@@ -1,6 +1,8 @@
 import React, { Component, useState, useContext, useEffect, Fragment } from 'react'
 import { Bar } from 'react-chartjs-2'
 import { BuffetContext } from '../Provider'
+import PieChart from './PieChart'
+import PieChartDebt from './PieChartDebt'
 
 
 
@@ -95,6 +97,7 @@ const Barchart = () => {
                 </div>
               </div>
             </div>
+            <PieChart />
             <div class="col-xl-8 col-lg-7">
               <div class="card shadow mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -131,6 +134,7 @@ const Barchart = () => {
                 </div>
               </div>
             </div>
+            <PieChartDebt />
             <div class="col-xl-8 col-lg-7">
               <div class="card shadow mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">

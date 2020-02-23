@@ -11,6 +11,7 @@ export default class Dashboard extends Component {
   componentDidMount() {
     this.context.infoFetch()
     this.context.infoFetchIncomeYearly()
+    this.context.infoFetchBalanceSheet()
   }
 
     render() {
@@ -105,10 +106,6 @@ export default class Dashboard extends Component {
                   </div> 
                 )}
                 <Barchart></Barchart>
-                
-
-
-
                 </div>
                 </div>
             </div>
